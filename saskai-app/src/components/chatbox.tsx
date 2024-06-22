@@ -35,16 +35,18 @@ const ChatBox = () => {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto mt-10">
-      <CardHeader className="py-4 px-6 rounded-t-lg">
+    <Card className="w-full max-w-2xl mx-auto mt-10 rounded-none">
+      <CardHeader className="py-4 px-6">
         <CardTitle className="text-xl font-semibold">Chat with SaskAI</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4 h-96 overflow-y-auto p-6">
         {messages.map((message, index) => (
           <Card
             key={index}
-            className={`p-3 rounded-md ${
-              message.sender === "bot" ? "" : "bg-primary text-primary-foreground"
+            className={`p-3 ${
+              message.sender === "bot"
+                ? "rounded-none"
+                : "bg-primary rounded-none text-primary-foreground"
             } max-w-fit`}
           >
             {message.sender === "bot" ? (
@@ -62,17 +64,17 @@ const ChatBox = () => {
           </Card>
         ))}
         {isTyping && (
-          <Card className="p-3 rounded-md max-w-fit">
+          <Card className="p-3 max-w-fit rounded-none">
             <TypingIndicator />
           </Card>
         )}
       </CardContent>
-      <CardFooter className="flex gap-2 p-6 rounded-b-lg">
+      <CardFooter className="flex gap-2 p-6">
         <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask a question..."
-          className="flex-grow rounded-md px-4 py-2"
+          className="flex-grow rounded-none px-4 py-2"
         />
         <Button onClick={handleSendMessage} className="">
           Ask
