@@ -1,9 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { TypeAnimation } from "react-type-animation";
 
 const ChatBox = () => {
@@ -35,18 +32,18 @@ const ChatBox = () => {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto mt-10 rounded-none">
-      <CardHeader className="py-4 px-6">
-        <CardTitle className="text-xl font-semibold">Chat with SaskAI</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4 h-96 overflow-y-auto p-6">
+    <div className="w-full max-w-2xl mx-auto mt-10 border border-gray-300 shadow-2xl">
+      <div className="py-4 px-6">
+        <h2 className="text-xl font-semibold">Chat with SaskAI</h2>
+      </div>
+      <div className="space-y-4 h-96 overflow-y-auto p-6 border-b border-gray-300">
         {messages.map((message, index) => (
-          <Card
+          <div
             key={index}
-            className={`p-3 ${
+            className={`p-2 border ${
               message.sender === "bot"
-                ? "rounded-none"
-                : "bg-primary rounded-none text-primary-foreground"
+                ? "border-gray-300"
+                : "border-primary bg-primary text-primary-foreground"
             } max-w-fit`}
           >
             {message.sender === "bot" ? (
@@ -61,35 +58,38 @@ const ChatBox = () => {
             ) : (
               message.text
             )}
-          </Card>
+          </div>
         ))}
         {isTyping && (
-          <Card className="p-3 max-w-fit rounded-none">
+          <div className="p-2 border border-gray-300 max-w-fit">
             <TypingIndicator />
-          </Card>
+          </div>
         )}
-      </CardContent>
-      <CardFooter className="flex gap-2 p-6">
-        <Input
+      </div>
+      <div className="flex gap-2 p-6">
+        <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask a question..."
-          className="flex-grow rounded-none px-4 py-2"
+          className="flex-grow border border-gray-300 px-4 py-2"
         />
-        <Button onClick={handleSendMessage} className="">
+        <button
+          onClick={handleSendMessage}
+          className="border border-primary bg-primary text-primary-foreground px-4 py-2"
+        >
           Ask
-        </Button>
-      </CardFooter>
-    </Card>
+        </button>
+      </div>
+    </div>
   );
 };
 
 const TypingIndicator = () => {
   return (
     <div className="flex items-center space-x-2">
-      <div className="typing-dot bg-primary rounded-full w-2 h-2 animate-bounce"></div>
-      <div className="typing-dot bg-primary rounded-full w-2 h-2 animate-bounce delay-100"></div>
-      <div className="typing-dot bg-primary rounded-full w-2 h-2 animate-bounce delay-200"></div>
+      <div className="typing-dot bg-primary w-2 h-2 animate-bounce"></div>
+      <div className="typing-dot bg-primary w-2 h-2 animate-bounce delay-100"></div>
+      <div className="typing-dot bg-primary w-2 h-2 animate-bounce delay-200"></div>
     </div>
   );
 };
