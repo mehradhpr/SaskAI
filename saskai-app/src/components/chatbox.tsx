@@ -52,6 +52,7 @@ const ChatBox = () => {
                 omitDeletionAnimation={true}
                 style={{ fontSize: "1em", display: "block" }}
                 repeat={0}
+                cursor={false}
               />
             ) : (
               message.text
