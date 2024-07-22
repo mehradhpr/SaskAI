@@ -86,10 +86,16 @@ export const NavBar = () => {
               href="/"
               className="p-2 py-3 hover:bg-pink hover:text-title transition-colors duration-300"
             >
+              Chat
+            </Link>
+            <Link
+              href="/about"
+              className="p-2 py-3 hover:bg-pink hover:text-title transition-colors duration-300"
+            >
               About
             </Link>
             <Link
-              href="/ed&ex"
+              href="/contact"
               className="p-2 py-3 hover:bg-blue hover:text-title transition-colors duration-300"
             >
               Contact
@@ -100,7 +106,7 @@ export const NavBar = () => {
         <div className="flex justify-end">
           <Link
             href="/"
-            className="text-md text-title min-h-fit min-w-fit z-50 tracking-widest xl:text-xl p-2"
+            className="text-md text-green-600 min-h-fit min-w-fit z-50 tracking-widest xl:text-xl p-2"
           >
             SASKAI
           </Link>

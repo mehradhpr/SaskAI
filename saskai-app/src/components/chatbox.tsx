@@ -40,10 +40,8 @@ const ChatBox = () => {
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`p-2 border ${
-              message.sender === "bot"
-                ? "border-gray-300"
-                : "border-primary bg-primary text-primary-foreground"
+            className={`px-4 py-2 border-2 ${
+              message.sender === "bot" ? "border-gray-300" : "border-green-600"
             } max-w-fit`}
           >
             {message.sender === "bot" ? (
@@ -71,11 +69,11 @@ const ChatBox = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask a question..."
-          className="flex-grow border border-gray-300 px-4 py-2"
+          className="flex-grow border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-green-600 focus:outline-none"
         />
         <button
           onClick={handleSendMessage}
-          className="border border-primary bg-primary text-primary-foreground px-4 py-2"
+          className="border border-primary bg-green-600 text-primary-foreground px-4 py-2 font-bold"
         >
           Ask
         </button>
